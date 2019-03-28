@@ -1,0 +1,36 @@
+unix_to_unix.txt: Little-endian UTF-16 Unicode text
+unix_to_mac.txt: Little-endian UTF-16 Unicode text, with CR line terminators
+unix_to_win.txt: Little-endian UTF-16 Unicode text, with CRLF, CR line terminators
+mac_to_unix.txt: Little-endian UTF-16 Unicode text
+mac_to_mac.txt: Little-endian UTF-16 Unicode text, with CR line terminators
+mac_to_win.txt: Little-endian UTF-16 Unicode text, with CRLF, CR line terminators
+win_to_unix.txt: Little-endian UTF-16 Unicode text
+win_to_mac.txt: Little-endian UTF-16 Unicode text, with CR line terminators
+win_to_win.txt: Little-endian UTF-16 Unicode text, with CRLF, CR line terminators
+________________________________
+end part 1
+________________________________
+unix_to_unix_swap.txt: Big-endian UTF-16 Unicode text
+unix_to_mac_swap.txt: Big-endian UTF-16 Unicode text, with CR line terminators
+unix_to_win_swap.txt: Big-endian UTF-16 Unicode text, with CRLF line terminators
+mac_to_unix_swap.txt: Big-endian UTF-16 Unicode text
+mac_to_mac_swap.txt: Big-endian UTF-16 Unicode text, with CR line terminators
+mac_to_win_swap.txt: Big-endian UTF-16 Unicode text, with CRLF line terminators
+win_to_unix_swap.txt: Big-endian UTF-16 Unicode text
+win_to_mac_swap.txt: Big-endian UTF-16 Unicode text, with CR line terminators
+win_to_win_swap.txt: Big-endian UTF-16 Unicode text, with CRLF line terminators
+________________________________
+end part 2
+________________________________
+unix_to_unix_keep.txt: Little-endian UTF-16 Unicode text
+unix_to_mac_keep.txt: Little-endian UTF-16 Unicode text, with CR line terminators
+unix_to_win_keep.txt: Little-endian UTF-16 Unicode text, with CRLF, CR line terminators
+mac_to_unix_keep.txt: Little-endian UTF-16 Unicode text
+mac_to_mac_keep.txt: Little-endian UTF-16 Unicode text, with CR line terminators
+mac_to_win_keep.txt: Little-endian UTF-16 Unicode text, with CRLF, CR line terminators
+win_to_unix_keep.txt: Little-endian UTF-16 Unicode text
+win_to_mac_keep.txt: Little-endian UTF-16 Unicode text, with CR line terminators
+win_to_win_keep.txt: Little-endian UTF-16 Unicode text, with CRLF, CR line terminators
+________________________________
+end part 3
+________________________________
