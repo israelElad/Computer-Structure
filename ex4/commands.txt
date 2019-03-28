@@ -1,0 +1,43 @@
+elad@elad-Inspiron-3542:~$ ssh israele4@u2.cs.biu.ac.il
+
+u2 israele4 101 : cd CS4
+
+u2 israele4 102 : cd bomb133
+
+u2 israele4 103 : ls
+
+u2 israele4 104 : pico myDissasemblyT.txt
+u2 israele4 105 : gdb bomb
+
+(gdb) break explode_bomb
+Breakpoint 1 at 0x4013ef
+(gdb) break phase_1
+Breakpoint 2 at 0x4011e5
+(gdb) run
+
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+
+(gdb) disas
+
+(gdb) break strings_not_equal
+Breakpoint 3 at 0x40122c
+(gdb) r
+
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+disas 
+
+Breakpoint 2, 0x00000000004011e5 in phase_1 ()
+(gdb) disas
+
+(gdb) c
+
+(gdb) disas
+
+(gdb) display $rdi
+
+(gdb) x/s $rsi
+0x4023a6 <__dso_handle+382>:	 "Wow! Brazil is big."
+
+

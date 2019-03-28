@@ -1,0 +1,166 @@
+elad@elad-Inspiron-3542:~$ ssh israele4@u2.cs.biu.ac.il
+israele4@u2.cs.biu.ac.il's password: 
+Last login: Tue Dec 11 17:32:23 2018 from wirelessinternet14.wrl.biu.ac.il
+.- BS"D ----------------------------------------------------------------------.
+|                                                                             |
+|                 W E L C O M E to the Bar-Ilan university,                   |
+|                  Math and Computer Science departments!                     |
+|                                                                             |
+|-----------------------------------------------------------------------------|
+|                                                                             |
+| NOTE:  Use of university computer equipment and connection via such         |
+| equipment to the Internet is restricted to university-related               |
+| professional purposes only.  All users are bound by university policy as    |
+| detailed in the document "BIU Policy on Usage of Computer Network           |
+| Resources" that appears on the Bar-Ilan site on the Internet.               |
+|                                                                             |
+|-----------------------------------------------------------------------------|
+|                                                                             |
+| Quota limitation is applied on mail spool, if your mailbox in spool is      |
+| too big, new letters for you will simply return to their sender. Make       |
+| a habit for cleaning your mail in spool. Use quota -v to see limits.        |
+|                                                                             |
+`-----------------------------------------------------------------------------'
+
+u2 israele4 101 : cd CS4
+u2 israele4 102 : cd bomb133
+u2 israele4 103 : ls
+bomb    myDissasemblyStr.txt  myDissasemblyT.txt  README
+bomb.c  myDissasemblyS.txt    myDissasembly.txt
+u2 israele4 104 : pico myDissasemblyT.txt
+u2 israele4 105 : gdb bomb
+GNU gdb (GDB) Red Hat Enterprise Linux (7.2-75.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /u/stud/israele4/CS4/bomb133/bomb...done.
+(gdb) break explode_bomb
+Breakpoint 1 at 0x4013ef
+(gdb) break phase_1
+Breakpoint 2 at 0x4011e5
+(gdb) run
+Starting program: /u/stud/israele4/CS4/bomb133/bomb 
+warning: the debug information found in "/usr/lib/debug//lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+dissas
+
+Breakpoint 2, 0x00000000004011e5 in phase_1 ()
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.192.el6.x86_64
+(gdb) disas
+Dump of assembler code for function phase_1:
+=> 0x00000000004011e5 <+0>:	sub    $0x8,%rsp
+   0x00000000004011e9 <+4>:	mov    $0x4023a6,%esi
+   0x00000000004011ee <+9>:	callq  0x40122c <strings_not_equal>
+   0x00000000004011f3 <+14>:	test   %eax,%eax
+   0x00000000004011f5 <+16>:	je     0x4011fc <phase_1+23>
+   0x00000000004011f7 <+18>:	callq  0x4013ef <explode_bomb>
+   0x00000000004011fc <+23>:	add    $0x8,%rsp
+   0x0000000000401200 <+27>:	retq   
+End of assembler dump.
+(gdb) break strings_not_equal
+Breakpoint 3 at 0x40122c
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /u/stud/israele4/CS4/bomb133/bomb 
+warning: the debug information found in "/usr/lib/debug//lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+disas 
+
+Breakpoint 2, 0x00000000004011e5 in phase_1 ()
+(gdb) disas
+Dump of assembler code for function phase_1:
+=> 0x00000000004011e5 <+0>:	sub    $0x8,%rsp
+   0x00000000004011e9 <+4>:	mov    $0x4023a6,%esi
+   0x00000000004011ee <+9>:	callq  0x40122c <strings_not_equal>
+   0x00000000004011f3 <+14>:	test   %eax,%eax
+   0x00000000004011f5 <+16>:	je     0x4011fc <phase_1+23>
+   0x00000000004011f7 <+18>:	callq  0x4013ef <explode_bomb>
+   0x00000000004011fc <+23>:	add    $0x8,%rsp
+   0x0000000000401200 <+27>:	retq   
+End of assembler dump.
+(gdb) c
+Continuing.
+
+Breakpoint 3, 0x000000000040122c in strings_not_equal ()
+(gdb) disas
+Dump of assembler code for function strings_not_equal:
+=> 0x000000000040122c <+0>:	push   %r12
+   0x000000000040122e <+2>:	push   %rbp
+   0x000000000040122f <+3>:	push   %rbx
+   0x0000000000401230 <+4>:	mov    %rdi,%rbx
+   0x0000000000401233 <+7>:	mov    %rsi,%rbp
+   0x0000000000401236 <+10>:	callq  0x401210 <string_length>
+   0x000000000040123b <+15>:	mov    %eax,%r12d
+   0x000000000040123e <+18>:	mov    %rbp,%rdi
+   0x0000000000401241 <+21>:	callq  0x401210 <string_length>
+   0x0000000000401246 <+26>:	cmp    %eax,%r12d
+   0x0000000000401249 <+29>:	jne    0x401271 <strings_not_equal+69>
+   0x000000000040124b <+31>:	movzbl (%rbx),%edx
+   0x000000000040124e <+34>:	test   %dl,%dl
+   0x0000000000401250 <+36>:	je     0x401278 <strings_not_equal+76>
+   0x0000000000401252 <+38>:	mov    %rbp,%rax
+   0x0000000000401255 <+41>:	cmp    0x0(%rbp),%dl
+   0x0000000000401258 <+44>:	je     0x401264 <strings_not_equal+56>
+   0x000000000040125a <+46>:	jmp    0x401271 <strings_not_equal+69>
+   0x000000000040125c <+48>:	add    $0x1,%rax
+   0x0000000000401260 <+52>:	cmp    (%rax),%dl
+   0x0000000000401262 <+54>:	jne    0x401271 <strings_not_equal+69>
+   0x0000000000401264 <+56>:	add    $0x1,%rbx
+   0x0000000000401268 <+60>:	movzbl (%rbx),%edx
+   0x000000000040126b <+63>:	test   %dl,%dl
+   0x000000000040126d <+65>:	jne    0x40125c <strings_not_equal+48>
+   0x000000000040126f <+67>:	jmp    0x401278 <strings_not_equal+76>
+   0x0000000000401271 <+69>:	mov    $0x1,%eax
+   0x0000000000401276 <+74>:	jmp    0x40127d <strings_not_equal+81>
+   0x0000000000401278 <+76>:	mov    $0x0,%eax
+   0x000000000040127d <+81>:	pop    %rbx
+   0x000000000040127e <+82>:	pop    %rbp
+   0x000000000040127f <+83>:	pop    %r12
+   0x0000000000401281 <+85>:	retq   
+End of assembler dump.
+(gdb) display $rdi
+1: $rdi = 6305952
+(gdb) display $rsi
+2: $rsi = 4203430
+(gdb) display $rbx
+3: $rbx = 140737488347432
+(gdb) x/s $rbx
+0x7fffffffe128:	 "K\344\377\377\377\177"
+(gdb) x/s $rsi
+0x4023a6 <__dso_handle+382>:	 "Wow! Brazil is big."
+(gdb) x/s $rdi
+0x6038a0 <input_strings>:	 "disas"
+(gdb) x/s $rsi
+0x4023a6 <__dso_handle+382>:	 "Wow! Brazil is big."
+(gdb) 
+

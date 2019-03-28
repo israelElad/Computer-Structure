@@ -1,0 +1,24 @@
+0x0000000000401093 <+0>:	push   %rbx
+   0x0000000000401094 <+1>:	mov    %rdi,%rbx                //input string
+   0x0000000000401097 <+4>:	callq  0x401210 <string_length>
+   0x000000000040109c <+9>:	cmp    $0x6,%eax                //string is length 6
+   0x000000000040109f <+12>:	je     0x4010a6 <phase_5+19>    
+   0x00000000004010a1 <+14>:	callq  0x4013ef <explode_bomb>
+   0x00000000004010a6 <+19>:	lea    0x6(%rbx),%rsi         //rsi=address of /0 - last place- end loop
+   0x00000000004010aa <+23>:	mov    $0x0,%eax              //eax=0
+   0x00000000004010af <+28>:	mov    $0x402400,%edx    //edx points to external int array begin
+   0x00000000004010b4 <+33>:	movsbq (%rbx),%rcx          //first letter in rcx
+   0x00000000004010b8 <+37>:	and    $0xf,%ecx            //if first letter bigger then 15 -"and" with it(in ecx) 
+   0x00000000004010bb <+40>:	add    (%rdx,%rcx,4),%eax   //take address of first char in str array and jump to its value and add to rax
+   0x00000000004010be <+43>:	add    $0x1,%rbx            //next letter(rbx++)
+   0x00000000004010c2 <+47>:	cmp    %rsi,%rbx            //reached end of string array
+   0x00000000004010c5 <+50>:	jne    0x4010b4 <phase_5+33>
+   0x00000000004010c7 <+52>:	cmp    $0x34,%eax           //eax must be 52
+   0x00000000004010ca <+55>:	je     0x4010d1 <phase_5+62>
+   0x00000000004010cc <+57>:	callq  0x4013ef <explode_bomb>
+   0x00000000004010d1 <+62>:	pop    %rbx
+   0x00000000004010d2 <+63>:	retq  
+
+2+letter*4=34 add to
+0 -> 2
+2->2+

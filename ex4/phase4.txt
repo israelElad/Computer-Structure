@@ -1,0 +1,994 @@
+0x00000000004010d3 <+0>:	sub    $0x18,%rsp //allocate 18 bytes
+   0x00000000004010d7 <+4>:	lea    0x8(%rsp),%rcx //rcx(forth-second param) points to rsp+8
+   0x00000000004010dc <+9>:	lea    0xc(%rsp),%rdx //rdx(third-first param) points to rsp+12
+   0x00000000004010e1 <+14>:	mov    $0x4024aa,%esi //pattern "%d %d"
+   0x00000000004010e6 <+19>:	mov    $0x0,%eax
+   0x00000000004010eb <+24>:	callq  0x400ac8 <__isoc99_sscanf@plt>
+   0x00000000004010f0 <+29>:	cmp    $0x2,%eax
+   0x00000000004010f3 <+32>:	jne    0x401102 <phase_4+47>
+   0x00000000004010f5 <+34>:	mov    0xc(%rsp),%eax // first param in eax
+   0x00000000004010f9 <+38>:	test   %eax,%eax //first param>0 -->first must be positive!!
+   0x00000000004010fb <+40>:	js     0x401102 <phase_4+47>
+   0x00000000004010fd <+42>:	cmp    $0xe,%eax                     //first param must be <=14
+   0x0000000000401100 <+45>:	jle    0x401107 <phase_4+52>
+   0x0000000000401102 <+47>:	callq  0x4013ef <explode_bomb>
+   0x0000000000401107 <+52>:	mov    $0xe,%edx    //edx=14
+   0x000000000040110c <+57>:	mov    $0x0,%esi       //esi=0
+   0x0000000000401111 <+62>:	mov    0xc(%rsp),%edi   //first param in edi
+   0x0000000000401115 <+66>:	callq  0x400e70 <func4>
+   0x000000000040111a <+71>:	cmp    $0x2b,%eax                   //return value must be 2b(43)
+   0x000000000040111d <+74>:	jne    0x401126 <phase_4+83>
+   0x000000000040111f <+76>:	cmpl   $0x2b,0x8(%rsp)               //second param must be 2b(43)
+   0x0000000000401124 <+81>:	je     0x40112b <phase_4+88>
+---Type <return> to continue, or q <return> to quit---
+   0x0000000000401126 <+83>:	callq  0x4013ef <explode_bomb>
+   0x000000000040112b <+88>:	add    $0x18,%rsp
+   0x000000000040112f <+92>:	retq   
+
+
+
+Dump of assembler code for function func4:
+   0x0000000000400e70 <+0>:	push   %rbx
+   0x0000000000400e71 <+1>:	mov    %edx,%eax //edx=eax=14
+   0x0000000000400e73 <+3>:	sub    %esi,%eax  //eax-0  (esi=0)
+   0x0000000000400e75 <+5>:	mov    %eax,%ebx    //ebx=14
+   0x0000000000400e77 <+7>:	shr    $0x1f,%ebx   //ebx=0
+   0x0000000000400e7a <+10>:	lea    (%rbx,%rax,1),%eax
+   0x0000000000400e7d <+13>:	sar    %eax
+   0x0000000000400e7f <+15>:	lea    (%rax,%rsi,1),%ebx
+   0x0000000000400e82 <+18>:	cmp    %edi,%ebx
+   0x0000000000400e84 <+20>:	jle    0x400e92 <func4+34>
+   0x0000000000400e86 <+22>:	lea    -0x1(%rbx),%edx
+   0x0000000000400e89 <+25>:	callq  0x400e70 <func4>
+   0x0000000000400e8e <+30>:	add    %eax,%ebx
+   0x0000000000400e90 <+32>:	jmp    0x400ea0 <func4+48>
+   0x0000000000400e92 <+34>:	cmp    %edi,%ebx
+   0x0000000000400e94 <+36>:	jge    0x400ea0 <func4+48>
+   0x0000000000400e96 <+38>:	lea    0x1(%rbx),%esi
+   0x0000000000400e99 <+41>:	callq  0x400e70 <func4>
+   0x0000000000400e9e <+46>:	add    %eax,%ebx
+   0x0000000000400ea0 <+48>:	mov    %ebx,%eax
+   0x0000000000400ea2 <+50>:	pop    %rbx
+   0x0000000000400ea3 <+51>:	retq   
+
+
+
+
+
+
+
+elad@elad-Inspiron-3542:~$ ssh israele4@u2.cs.biu.ac.il
+israele4@u2.cs.biu.ac.il's password: 
+Last login: Thu Dec 13 14:51:31 2018 from 2.55.58.69
+.- BS"D ----------------------------------------------------------------------.
+|                                                                             |
+|                 W E L C O M E to the Bar-Ilan university,                   |
+|                  Math and Computer Science departments!                     |
+|                                                                             |
+|-----------------------------------------------------------------------------|
+|                                                                             |
+| NOTE:  Use of university computer equipment and connection via such         |
+| equipment to the Internet is restricted to university-related               |
+| professional purposes only.  All users are bound by university policy as    |
+| detailed in the document "BIU Policy on Usage of Computer Network           |
+| Resources" that appears on the Bar-Ilan site on the Internet.               |
+|                                                                             |
+|-----------------------------------------------------------------------------|
+|                                                                             |
+| Quota limitation is applied on mail spool, if your mailbox in spool is      |
+| too big, new letters for you will simply return to their sender. Make       |
+| a habit for cleaning your mail in spool. Use quota -v to see limits.        |
+|                                                                             |
+`-----------------------------------------------------------------------------'
+
+u2 israele4 101 : gdb bomb
+GNU gdb (GDB) Red Hat Enterprise Linux (7.2-75.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+bomb: No such file or directory.
+(gdb) ^C(gdb) Quit
+(gdb) q
+u2 israele4 102 : cd CS4
+u2 israele4 103 : cd bomb133
+u2 israele4 104 : gdb bomb
+GNU gdb (GDB) Red Hat Enterprise Linux (7.2-75.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /u/stud/israele4/CS4/bomb133/bomb...done.
+(gdb) break explode_bomb
+Breakpoint 1 at 0x4013ef
+(gdb) break phase_4
+Breakpoint 2 at 0x4010d3
+(gdb) r
+Starting program: /u/stud/israele4/CS4/bomb133/bomb 
+warning: the debug information found in "/usr/lib/debug//lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Wow! Brazil is big.
+Phase 1 defused. How about the next one?
+1 2 4 7 11 16
+That's number 2.  Keep going!
+0 -1285
+Halfway there!
+-1 43
+
+Breakpoint 2, 0x00000000004010d3 in phase_4 ()
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.192.el6.x86_64
+(gdb) disas
+Dump of assembler code for function phase_4:
+=> 0x00000000004010d3 <+0>:	sub    $0x18,%rsp
+   0x00000000004010d7 <+4>:	lea    0x8(%rsp),%rcx
+   0x00000000004010dc <+9>:	lea    0xc(%rsp),%rdx
+   0x00000000004010e1 <+14>:	mov    $0x4024aa,%esi
+   0x00000000004010e6 <+19>:	mov    $0x0,%eax
+   0x00000000004010eb <+24>:	callq  0x400ac8 <__isoc99_sscanf@plt>
+   0x00000000004010f0 <+29>:	cmp    $0x2,%eax
+   0x00000000004010f3 <+32>:	jne    0x401102 <phase_4+47>
+   0x00000000004010f5 <+34>:	mov    0xc(%rsp),%eax
+   0x00000000004010f9 <+38>:	test   %eax,%eax
+   0x00000000004010fb <+40>:	js     0x401102 <phase_4+47>
+   0x00000000004010fd <+42>:	cmp    $0xe,%eax
+   0x0000000000401100 <+45>:	jle    0x401107 <phase_4+52>
+   0x0000000000401102 <+47>:	callq  0x4013ef <explode_bomb>
+   0x0000000000401107 <+52>:	mov    $0xe,%edx
+   0x000000000040110c <+57>:	mov    $0x0,%esi
+   0x0000000000401111 <+62>:	mov    0xc(%rsp),%edi
+   0x0000000000401115 <+66>:	callq  0x400e70 <func4>
+   0x000000000040111a <+71>:	cmp    $0x2b,%eax
+   0x000000000040111d <+74>:	jne    0x401126 <phase_4+83>
+   0x000000000040111f <+76>:	cmpl   $0x2b,0x8(%rsp)
+   0x0000000000401124 <+81>:	je     0x40112b <phase_4+88>
+---Type <return> to continue, or q <return> to quit---
+   0x0000000000401126 <+83>:	callq  0x4013ef <explode_bomb>
+   0x000000000040112b <+88>:	add    $0x18,%rsp
+   0x000000000040112f <+92>:	retq   
+End of assembler dump.
+(gdb) layout asm
+u2 israele4 105 : gdb bomb
+GNU gdb (GDB) Red Hat Enterprise Linux (7.2-75.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /u/stud/israele4/CS4/bomb133/bomb...done.
+(gdb) Wow! Brazil is big.
+Undefined command: "Wow".  Try "help".
+(gdb) break explode_bomb
+Breakpoint 1 at 0x4013ef
+(gdb) break phase_4
+Breakpoint 2 at 0x4010d3
+(gdb) r
+Starting program: /u/stud/israele4/CS4/bomb133/bomb 
+warning: the debug information found in "/usr/lib/debug//lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Wow! Brazil is big.
+Phase 1 defused. How about the next one?
+1 2 4 7 11 16
+That's number 2.  Keep going!
+0 -1285
+Halfway there!
+-1 43
+
+Breakpoint 2, 0x00000000004010d3 in phase_4 ()
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.192.el6.x86_64
+u2 israele4 106 : gdb bomb
+GNU gdb (GDB) Red Hat Enterprise Linux (7.2-75.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /u/stud/israele4/CS4/bomb133/bomb...done.
+(gdb) break explode_bomb
+Breakpoint 1 at 0x4013ef
+(gdb) break phase_4
+Breakpoint 2 at 0x4010d3
+(gdb) r
+Starting program: /u/stud/israele4/CS4/bomb133/bomb 
+warning: the debug information found in "/usr/lib/debug//lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+1 2 4 7 11 16
+
+Breakpoint 1, 0x00000000004013ef in explode_bomb ()
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.192.el6.x86_64
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [process 31449] will be killed.
+
+Quit anyway? (y or n) y
+u2 israele4 107 : gdb bomb
+GNU gdb (GDB) Red Hat Enterprise Linux (7.2-75.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /u/stud/israele4/CS4/bomb133/bomb...done.
+(gdb) break explode_bomb
+Breakpoint 1 at 0x4013ef
+(gdb) break phase_4
+Breakpoint 2 at 0x4010d3
+(gdb) r
+Starting program: /u/stud/israele4/CS4/bomb133/bomb 
+warning: the debug information found in "/usr/lib/debug//lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Wow! Brazil is big.
+Phase 1 defused. How about the next one?
+1 2 4 7 11 16
+That's number 2.  Keep going!
+0 -1285
+Halfway there!
+-1 43
+
+Breakpoint 2, 0x00000000004010d3 in phase_4 ()
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.192.el6.x86_64
+(gdb) disas
+Dump of assembler code for function phase_4:
+=> 0x00000000004010d3 <+0>:	sub    $0x18,%rsp
+   0x00000000004010d7 <+4>:	lea    0x8(%rsp),%rcx
+   0x00000000004010dc <+9>:	lea    0xc(%rsp),%rdx
+   0x00000000004010e1 <+14>:	mov    $0x4024aa,%esi
+   0x00000000004010e6 <+19>:	mov    $0x0,%eax
+   0x00000000004010eb <+24>:	callq  0x400ac8 <__isoc99_sscanf@plt>
+   0x00000000004010f0 <+29>:	cmp    $0x2,%eax
+   0x00000000004010f3 <+32>:	jne    0x401102 <phase_4+47>
+   0x00000000004010f5 <+34>:	mov    0xc(%rsp),%eax
+   0x00000000004010f9 <+38>:	test   %eax,%eax
+   0x00000000004010fb <+40>:	js     0x401102 <phase_4+47>
+   0x00000000004010fd <+42>:	cmp    $0xe,%eax
+   0x0000000000401100 <+45>:	jle    0x401107 <phase_4+52>
+   0x0000000000401102 <+47>:	callq  0x4013ef <explode_bomb>
+   0x0000000000401107 <+52>:	mov    $0xe,%edx
+   0x000000000040110c <+57>:	mov    $0x0,%esi
+   0x0000000000401111 <+62>:	mov    0xc(%rsp),%edi
+   0x0000000000401115 <+66>:	callq  0x400e70 <func4>
+   0x000000000040111a <+71>:	cmp    $0x2b,%eax
+   0x000000000040111d <+74>:	jne    0x401126 <phase_4+83>
+   0x000000000040111f <+76>:	cmpl   $0x2b,0x8(%rsp)
+   0x0000000000401124 <+81>:	je     0x40112b <phase_4+88>
+   0x0000000000401126 <+83>:	callq  0x4013ef <explode_bomb>
+   0x000000000040112b <+88>:	add    $0x18,%rsp
+   0x000000000040112f <+92>:	retq   
+End of assembler dump.
+(gdb) 
+Dump of assembler code for function phase_4:
+=> 0x00000000004010d3 <+0>:	sub    $0x18,%rsp
+   0x00000000004010d7 <+4>:	lea    0x8(%rsp),%rcx
+   0x00000000004010dc <+9>:	lea    0xc(%rsp),%rdx
+   0x00000000004010e1 <+14>:	mov    $0x4024aa,%esi
+   0x00000000004010e6 <+19>:	mov    $0x0,%eax
+   0x00000000004010eb <+24>:	callq  0x400ac8 <__isoc99_sscanf@plt>
+   0x00000000004010f0 <+29>:	cmp    $0x2,%eax
+   0x00000000004010f3 <+32>:	jne    0x401102 <phase_4+47>
+   0x00000000004010f5 <+34>:	mov    0xc(%rsp),%eax
+   0x00000000004010f9 <+38>:	test   %eax,%eax
+   0x00000000004010fb <+40>:	js     0x401102 <phase_4+47>
+   0x00000000004010fd <+42>:	cmp    $0xe,%eax
+   0x0000000000401100 <+45>:	jle    0x401107 <phase_4+52>
+   0x0000000000401102 <+47>:	callq  0x4013ef <explode_bomb>
+   0x0000000000401107 <+52>:	mov    $0xe,%edx
+   0x000000000040110c <+57>:	mov    $0x0,%esi
+   0x0000000000401111 <+62>:	mov    0xc(%rsp),%edi
+   0x0000000000401115 <+66>:	callq  0x400e70 <func4>
+   0x000000000040111a <+71>:	cmp    $0x2b,%eax
+   0x000000000040111d <+74>:	jne    0x401126 <phase_4+83>
+   0x000000000040111f <+76>:	cmpl   $0x2b,0x8(%rsp)
+   0x0000000000401124 <+81>:	je     0x40112b <phase_4+88>
+   0x0000000000401126 <+83>:	callq  0x4013ef <explode_bomb>
+   0x000000000040112b <+88>:	add    $0x18,%rsp
+   0x000000000040112f <+92>:	retq   
+End of assembler dump.
+(gdb) stepi 5
+0x00000000004010eb in phase_4 ()
+(gdb) nexti
+0x00000000004010f0 in phase_4 ()
+(gdb) stepi 5
+0x0000000000401102 in phase_4 ()
+(gdb) stepi 3
+
+Breakpoint 1, 0x00000000004013ef in explode_bomb ()
+(gdb) display $eax
+1: $eax = -1
+(gdb) disas *func4
+Dump of assembler code for function func4:
+   0x0000000000400e70 <+0>:	push   %rbx
+   0x0000000000400e71 <+1>:	mov    %edx,%eax
+   0x0000000000400e73 <+3>:	sub    %esi,%eax
+   0x0000000000400e75 <+5>:	mov    %eax,%ebx
+   0x0000000000400e77 <+7>:	shr    $0x1f,%ebx
+   0x0000000000400e7a <+10>:	lea    (%rbx,%rax,1),%eax
+   0x0000000000400e7d <+13>:	sar    %eax
+   0x0000000000400e7f <+15>:	lea    (%rax,%rsi,1),%ebx
+   0x0000000000400e82 <+18>:	cmp    %edi,%ebx
+   0x0000000000400e84 <+20>:	jle    0x400e92 <func4+34>
+   0x0000000000400e86 <+22>:	lea    -0x1(%rbx),%edx
+   0x0000000000400e89 <+25>:	callq  0x400e70 <func4>
+   0x0000000000400e8e <+30>:	add    %eax,%ebx
+   0x0000000000400e90 <+32>:	jmp    0x400ea0 <func4+48>
+   0x0000000000400e92 <+34>:	cmp    %edi,%ebx
+   0x0000000000400e94 <+36>:	jge    0x400ea0 <func4+48>
+   0x0000000000400e96 <+38>:	lea    0x1(%rbx),%esi
+   0x0000000000400e99 <+41>:	callq  0x400e70 <func4>
+   0x0000000000400e9e <+46>:	add    %eax,%ebx
+   0x0000000000400ea0 <+48>:	mov    %ebx,%eax
+   0x0000000000400ea2 <+50>:	pop    %rbx
+   0x0000000000400ea3 <+51>:	retq   
+End of assembler dump.
+(gdb) packet_write_wait: Connection to 132.70.1.30 port 22: Broken pipe
+elad@elad-Inspiron-3542:~$ ssh israele4@u2.cs.biu.ac.il
+israele4@u2.cs.biu.ac.il's password: 
+Last login: Thu Dec 13 23:37:06 2018 from 141.226.218.29
+.- BS"D ----------------------------------------------------------------------.
+|                                                                             |
+|                 W E L C O M E to the Bar-Ilan university,                   |
+|                  Math and Computer Science departments!                     |
+|                                                                             |
+|-----------------------------------------------------------------------------|
+|                                                                             |
+| NOTE:  Use of university computer equipment and connection via such         |
+| equipment to the Internet is restricted to university-related               |
+| professional purposes only.  All users are bound by university policy as    |
+| detailed in the document "BIU Policy on Usage of Computer Network           |
+| Resources" that appears on the Bar-Ilan site on the Internet.               |
+|                                                                             |
+|-----------------------------------------------------------------------------|
+|                                                                             |
+| Quota limitation is applied on mail spool, if your mailbox in spool is      |
+| too big, new letters for you will simply return to their sender. Make       |
+| a habit for cleaning your mail in spool. Use quota -v to see limits.        |
+|                                                                             |
+`-----------------------------------------------------------------------------'
+
+u2 israele4 101 : cd CS4
+u2 israele4 102 : cd bomb133
+u2 israele4 103 : gdb bomb
+GNU gdb (GDB) Red Hat Enterprise Linux (7.2-75.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /u/stud/israele4/CS4/bomb133/bomb...done.
+(gdb) break explode_bomb
+Breakpoint 1 at 0x4013ef
+(gdb) packet_write_wait: Connection to 132.70.1.30 port 22: Broken pipe
+elad@elad-Inspiron-3542:~$ ssh israele4@u2.cs.biu.ac.il
+israele4@u2.cs.biu.ac.il's password: 
+Last login: Fri Dec 14 00:07:17 2018 from 141.226.218.29
+.- BS"D ----------------------------------------------------------------------.
+|                                                                             |
+|                 W E L C O M E to the Bar-Ilan university,                   |
+|                  Math and Computer Science departments!                     |
+|                                                                             |
+|-----------------------------------------------------------------------------|
+|                                                                             |
+| NOTE:  Use of university computer equipment and connection via such         |
+| equipment to the Internet is restricted to university-related               |
+| professional purposes only.  All users are bound by university policy as    |
+| detailed in the document "BIU Policy on Usage of Computer Network           |
+| Resources" that appears on the Bar-Ilan site on the Internet.               |
+|                                                                             |
+|-----------------------------------------------------------------------------|
+|                                                                             |
+| Quota limitation is applied on mail spool, if your mailbox in spool is      |
+| too big, new letters for you will simply return to their sender. Make       |
+| a habit for cleaning your mail in spool. Use quota -v to see limits.        |
+|                                                                             |
+`-----------------------------------------------------------------------------'
+
+u2 israele4 101 : cd CS4
+u2 israele4 102 : cd bomb133
+u2 israele4 103 : gdb bomb
+GNU gdb (GDB) Red Hat Enterprise Linux (7.2-75.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /u/stud/israele4/CS4/bomb133/bomb...done.
+(gdb) break explode_bomb
+Breakpoint 1 at 0x4013ef
+(gdb) Wow! Brazil is big.
+Undefined command: "Wow".  Try "help".
+(gdb) 1 2 4 7 11 16
+Undefined command: "1".  Try "help".
+(gdb) 0 -1285
+Undefined command: "0".  Try "help".
+(gdb) r
+Starting program: /u/stud/israele4/CS4/bomb133/bomb 
+warning: the debug information found in "/usr/lib/debug//lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Wow! Brazil is big.
+1 2 4 7 11 16
+0 -1285
+Phase 1 defused. How about the next one?
+That's number 2.  Keep going!
+Halfway there!
+1 43
+
+Breakpoint 1, 0x00000000004013ef in explode_bomb ()
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.192.el6.x86_64
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [process 7131] will be killed.
+
+Quit anyway? (y or n) y
+u2 israele4 104 : gdb bomb
+GNU gdb (GDB) Red Hat Enterprise Linux (7.2-75.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /u/stud/israele4/CS4/bomb133/bomb...done.
+(gdb) break explode_bomb
+Breakpoint 1 at 0x4013ef
+(gdb) r
+Starting program: /u/stud/israele4/CS4/bomb133/bomb 
+warning: the debug information found in "/usr/lib/debug//lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Wow! Brazil is big.
+1 2 4 7 11 16
+0 -1285
+Phase 1 defused. How about the next one?
+That's number 2.  Keep going!
+Halfway there!
+2 43
+
+Breakpoint 1, 0x00000000004013ef in explode_bomb ()
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.192.el6.x86_64
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [process 10239] will be killed.
+
+Quit anyway? (y or n) y
+u2 israele4 105 : gdb bomb
+GNU gdb (GDB) Red Hat Enterprise Linux (7.2-75.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /u/stud/israele4/CS4/bomb133/bomb...done.
+(gdb) break explode_bomb
+Breakpoint 1 at 0x4013ef
+(gdb) r
+Starting program: /u/stud/israele4/CS4/bomb133/bomb 
+warning: the debug information found in "/usr/lib/debug//lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Wow! Brazil is big.
+1 2 4 7 11 16
+0 -1285
+Phase 1 defused. How about the next one?
+That's number 2.  Keep going!
+Halfway there!
+3 43
+
+Breakpoint 1, 0x00000000004013ef in explode_bomb ()
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.192.el6.x86_64
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [process 11094] will be killed.
+
+Quit anyway? (y or n) y   
+u2 israele4 106 : gdb bomb
+GNU gdb (GDB) Red Hat Enterprise Linux (7.2-75.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /u/stud/israele4/CS4/bomb133/bomb...done.
+(gdb) break explode_bomb
+Breakpoint 1 at 0x4013ef
+(gdb) r
+Starting program: /u/stud/israele4/CS4/bomb133/bomb 
+warning: the debug information found in "/usr/lib/debug//lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Wow! Brazil is big.
+1 2 4 7 11 16
+0 -1285
+Phase 1 defused. How about the next one?
+That's number 2.  Keep going!
+Halfway there!
+4 43
+
+Breakpoint 1, 0x00000000004013ef in explode_bomb ()
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.192.el6.x86_64
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [process 11876] will be killed.
+
+Quit anyway? (y or n) y
+u2 israele4 107 : gdb bomb
+GNU gdb (GDB) Red Hat Enterprise Linux (7.2-75.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /u/stud/israele4/CS4/bomb133/bomb...done.
+(gdb) break explode_bomb
+Breakpoint 1 at 0x4013ef
+(gdb) r
+Starting program: /u/stud/israele4/CS4/bomb133/bomb 
+warning: the debug information found in "/usr/lib/debug//lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Wow! Brazil is big.
+1 2 4 7 11 16
+0 -1285
+Phase 1 defused. How about the next one?
+That's number 2.  Keep going!
+Halfway there!
+5 43
+
+Breakpoint 1, 0x00000000004013ef in explode_bomb ()
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.192.el6.x86_64
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [process 13553] will be killed.
+
+Quit anyway? (y or n) y
+u2 israele4 108 : gdb bomb
+GNU gdb (GDB) Red Hat Enterprise Linux (7.2-75.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /u/stud/israele4/CS4/bomb133/bomb...done.
+(gdb) break explode_bomb
+Breakpoint 1 at 0x4013ef
+(gdb) r
+Starting program: /u/stud/israele4/CS4/bomb133/bomb 
+warning: the debug information found in "/usr/lib/debug//lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Wow! Brazil is big.
+1 2 4 7 11 16
+0 -1285
+Phase 1 defused. How about the next one?
+That's number 2.  Keep going!
+Halfway there!
+6 43
+
+Breakpoint 1, 0x00000000004013ef in explode_bomb ()
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.192.el6.x86_64
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [process 18471] will be killed.
+
+Quit anyway? (y or n) y
+u2 israele4 109 : gdb bomb
+GNU gdb (GDB) Red Hat Enterprise Linux (7.2-75.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /u/stud/israele4/CS4/bomb133/bomb...done.
+(gdb) break explode_bomb
+Breakpoint 1 at 0x4013ef
+(gdb) r
+Starting program: /u/stud/israele4/CS4/bomb133/bomb 
+warning: the debug information found in "/usr/lib/debug//lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Wow! Brazil is big.
+1 2 4 7 11 16
+0 -1285
+Phase 1 defused. How about the next one?
+That's number 2.  Keep going!
+Halfway there!
+7 43
+
+Breakpoint 1, 0x00000000004013ef in explode_bomb ()
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.192.el6.x86_64
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [process 19388] will be killed.
+
+Quit anyway? (y or n) y
+u2 israele4 110 : gdb bomb
+GNU gdb (GDB) Red Hat Enterprise Linux (7.2-75.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /u/stud/israele4/CS4/bomb133/bomb...done.
+(gdb)  break explode_bomb
+Breakpoint 1 at 0x4013ef
+(gdb) r
+Starting program: /u/stud/israele4/CS4/bomb133/bomb 
+warning: the debug information found in "/usr/lib/debug//lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Wow! Brazil is big.
+1 2 4 7 11 16
+0 -1285
+Phase 1 defused. How about the next one?
+That's number 2.  Keep going!
+Halfway there!
+8 43
+
+Breakpoint 1, 0x00000000004013ef in explode_bomb ()
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.192.el6.x86_64
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [process 28206] will be killed.
+
+Quit anyway? (y or n) y
+u2 israele4 111 : gdb bomb
+GNU gdb (GDB) Red Hat Enterprise Linux (7.2-75.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /u/stud/israele4/CS4/bomb133/bomb...done.
+(gdb) break explode_bomb
+Breakpoint 1 at 0x4013ef
+(gdb) r
+Starting program: /u/stud/israele4/CS4/bomb133/bomb 
+warning: the debug information found in "/usr/lib/debug//lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Wow! Brazil is big.
+1 2 4 7 11 16
+0 -1285Phase 1 defused. How about the next one?
+That's number 2.  Keep going!
+
+Halfway there!
+9 43
+
+Breakpoint 1, 0x00000000004013ef in explode_bomb ()
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.192.el6.x86_64
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [process 30533] will be killed.
+
+Quit anyway? (y or n) y    
+u2 israele4 112 : gdb bomb
+GNU gdb (GDB) Red Hat Enterprise Linux (7.2-75.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /u/stud/israele4/CS4/bomb133/bomb...done.
+(gdb) break explode_bomb
+Breakpoint 1 at 0x4013ef
+(gdb) r
+Starting program: /u/stud/israele4/CS4/bomb133/bomb 
+warning: the debug information found in "/usr/lib/debug//lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Wow! Brazil is big.
+1 2 4 7 11 16
+0 -1285Phase 1 defused. How about the next one?
+That's number 2.  Keep going!
+
+Halfway there!
+10 43
+
+Breakpoint 1, 0x00000000004013ef in explode_bomb ()
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.192.el6.x86_64
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [process 4614] will be killed.
+
+Quit anyway? (y or n) y
+u2 israele4 113 : gdb bomb
+GNU gdb (GDB) Red Hat Enterprise Linux (7.2-75.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /u/stud/israele4/CS4/bomb133/bomb...done.
+(gdb) break explode_bomb
+Breakpoint 1 at 0x4013ef
+(gdb) r
+Starting program: /u/stud/israele4/CS4/bomb133/bomb 
+warning: the debug information found in "/usr/lib/debug//lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Wow! Brazil is big.
+1 2 4 7 11 16
+0 -1285Phase 1 defused. How about the next one?
+That's number 2.  Keep going!
+
+Halfway there!
+11 43
+
+Breakpoint 1, 0x00000000004013ef in explode_bomb ()
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.192.el6.x86_64
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [process 5406] will be killed.
+
+Quit anyway? (y or n) y
+u2 israele4 114 : gdb bomb
+GNU gdb (GDB) Red Hat Enterprise Linux (7.2-75.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /u/stud/israele4/CS4/bomb133/bomb...done.
+(gdb) break explode_bomb
+Breakpoint 1 at 0x4013ef
+(gdb) r
+Starting program: /u/stud/israele4/CS4/bomb133/bomb 
+warning: the debug information found in "/usr/lib/debug//lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/ld-2.12.so.debug" does not match "/lib64/ld-linux-x86-64.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libc-2.12.so.debug" does not match "/lib64/libc.so.6" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug//lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+warning: the debug information found in "/usr/lib/debug/lib64/libnss_files-2.12.so.debug" does not match "/lib64/libnss_files.so.2" (CRC mismatch).
+
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Wow! Brazil is big.
+1 2 4 7 11 16
+0 -1285Phase 1 defused. How about the next one?
+That's number 2.  Keep going!
+
+Halfway there!
+12 43
+So you got that one.  Try this one.
+  
+
+
