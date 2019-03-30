@@ -1,0 +1,303 @@
+commit eb592f222c4b14147b47f046ddb14830509238d9
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Wed Jan 16 12:41:42 2019 +0200
+
+    Final finishes
+
+commit cff98fe585e88c7d50b09dd75ca2563fed91721c
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Wed Jan 16 11:50:36 2019 +0200
+
+    BFS
+
+commit adad386dc8937807da67c7faaafbb00b815e388b
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Wed Jan 16 10:13:12 2019 +0200
+
+    eraseSpaces
+
+commit 7fc807116ce35de99f0ff9dc6977ed5cebcdf7f5
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Wed Jan 16 00:42:04 2019 +0200
+
+    BFS
+
+commit d61b651e3101cb24869266795644dd3df354f758
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Wed Jan 16 00:09:11 2019 +0200
+
+    tests
+
+commit e355225c41ab0b804b9201a43c7f166eae871b14
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Wed Jan 16 00:07:56 2019 +0200
+
+    tests
+
+commit 6b73a6e90b2cef52c3d4fc84d9cb2ec6fc5a03e1
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Wed Jan 16 00:04:40 2019 +0200
+
+    BFS
+
+commit 6a4f9bb44806fccbba3c774b6ca9ae1362201f4c
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Tue Jan 15 23:04:19 2019 +0200
+
+    tests
+
+commit ca279761c28e99eb5fd38bfb42d2efca95d6736b
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Tue Jan 15 21:05:29 2019 +0200
+
+    tests
+
+commit e344e97654d60f9b92febf5c3605552a783f8953
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Tue Jan 15 18:56:03 2019 +0200
+
+    searchers fixes
+
+commit c9bc848799e9d8d7fd1546085a04ca97edfb19b1
+Merge: 8c2bc3d a0e9a04
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Tue Jan 15 18:50:57 2019 +0200
+
+    Merge remote-tracking branch 'origin/master'
+
+commit a0e9a0488e0f554276698a19fa587ce819d85bb4
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Tue Jan 15 18:50:39 2019 +0200
+
+    BFS
+
+commit 8c2bc3d3fcfab947d2fce87a78212b90be0cde37
+Merge: e2a5d5d ce655c6
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Tue Jan 15 18:46:19 2019 +0200
+
+    Merge remote-tracking branch 'origin/master'
+
+commit ce655c65b2a33fa0b4dc0d3cd59fbe6db2f80d64
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Tue Jan 15 18:46:07 2019 +0200
+
+    BFS
+
+commit 68d8f5ff8e829ccf468e0de703068aa916b91ed1
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Tue Jan 15 18:32:06 2019 +0200
+
+    BFS
+
+commit e2a5d5d4d011dc77f0fe6a0a589540d6f9804d4f
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Tue Jan 15 15:09:25 2019 +0200
+
+    Merge branch 'master' of /home/elad/CLionProjects/project2 with conflicts.
+
+commit 44a6b3cfe9a23358df69805a151c335d293e3d0c
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Tue Jan 15 15:08:57 2019 +0200
+
+    BFS
+
+commit fb45ee0f26ea90d539bafd3570239d351df9678d
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Tue Jan 15 13:52:54 2019 +0200
+
+    BFS
+
+commit 9e720a959f289f82e52a4b5d5a350f6f30cc6e74
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Tue Jan 15 01:10:29 2019 +0200
+
+    client handler update
+
+commit 4a900b86d6ad4d3c4aee9f8731b211e724549d37
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Tue Jan 15 01:09:35 2019 +0200
+
+    BFS
+
+commit 823c58e28348c3f640da970926e272bd9cf3c065
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Tue Jan 15 00:09:42 2019 +0200
+
+    BFS
+
+commit fdbc9528e5118ef40a72a210af06aec9df1e26a1
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Mon Jan 14 23:11:17 2019 +0200
+
+    BFS
+
+commit 4b3fa98568af32efd24de001d4bd74f11f69914b
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Mon Jan 14 21:11:15 2019 +0200
+
+    bestFirstSearch
+
+commit c9e1860b0fb5cba463ef695c0e0f48551b2e9c07
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Mon Jan 14 19:57:08 2019 +0200
+
+    bestFirstSearch
+
+commit c25a71962bda0bcdce0f6b02771fc94a8dd9b0ce
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Sun Jan 13 23:22:21 2019 +0200
+
+    serial server and parallel server with abstract, all works :)
+
+commit 021dc245fe8a4649f461f0b4775c85d8bc5fce7d
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Sun Jan 13 23:02:55 2019 +0200
+
+    bestFirstSearch
+
+commit 47cdc34bfe918602a3d77de8205916724d9634df
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Fri Jan 11 13:55:20 2019 +0200
+
+    templates compile
+
+commit 028092620189a50703da6f1e42f3859179a636f0
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Thu Jan 10 22:15:14 2019 +0200
+
+    lot of classes
+
+commit 6b90c25c3e7c550bd4477da425362c77abad23ba
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Thu Jan 10 22:03:06 2019 +0200
+
+    serial server working with interval
+
+commit 8e919e2235812b8d565b5aa01dc738b2a151305e
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Thu Jan 10 22:01:28 2019 +0200
+
+    Merge branch 'master' of /home/elad/CLionProjects/project2 with conflicts.
+
+commit de22e95e9b8cd29509871f6e7a93b6eac5c6ec5d
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Wed Jan 9 00:00:42 2019 +0200
+
+    Main
+
+commit 265a92e411d7e97ff58e12c925e90936a52cee0b
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Tue Jan 8 22:58:58 2019 +0200
+
+    Main
+
+commit bae1ecf5e6ac348f793993564c684714b3838f2d
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Tue Jan 8 21:33:20 2019 +0200
+
+    server working
+
+commit a9c1b211cd64b3fac3a05d549e12e0c31a6f7c48
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Tue Jan 8 19:15:13 2019 +0200
+
+    begin part 3,debug part 2
+
+commit 5da0c8ac8c3fc361c11ea3f8df1b06daaf923c72
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Tue Jan 8 19:08:24 2019 +0200
+
+    Main
+
+commit 035fb478665a21a0d107058b7411d55dc07a4ffb
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Tue Jan 8 19:03:36 2019 +0200
+
+    Main
+
+commit df246deebdfb5d7f92e3876737737b10b49ac5f6
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Tue Jan 8 18:24:07 2019 +0200
+
+    Server, Thread, Task, Runnable
+
+commit f596b6174b1a84ce6d08eb1a23cce555b06644af
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Tue Jan 8 18:00:26 2019 +0200
+
+    Main
+
+commit e5f6314ba526273865ab7b48b9013488b9a6ba23
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Tue Jan 8 17:52:48 2019 +0200
+
+    Main
+
+commit 4d333413725de0d1226ecdff344b265bc74dd18f
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Tue Jan 8 17:46:25 2019 +0200
+
+    Main
+
+commit 48828abbbd64caf91ee4abc39ce73d34bca539c5
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Tue Jan 8 17:44:57 2019 +0200
+
+    Server, Thread, Task, Runnable
+
+commit a12948935da4db180378d7248fa4463cb7960edf
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Tue Jan 8 17:13:27 2019 +0200
+
+    Server, Thread, Task, Runnable
+
+commit 461dc604825354e9c85d4b68b3502da45bb03a6f
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Tue Jan 8 17:05:57 2019 +0200
+
+    Server, Thread, Task, Runnable
+
+commit 2abf38afa57af7b578ed5ddce01c83f3a46272b1
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Tue Jan 8 13:26:48 2019 +0200
+
+    Main
+
+commit 7ebddc7ab3edb94f0f2fa505bab5fa87878e7139
+Author: Narkis Shallev <karmizi101@gmail.com>
+Date:   Mon Jan 7 22:45:52 2019 +0200
+
+    fileCacheManager
+    myTestClientHandler
+
+commit c1dcdaedce530a68c5a905bd10a713b7f1192e85
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Mon Jan 7 22:43:13 2019 +0200
+
+    Server, Thread, Task, Runnable
+
+commit 8c4ff57d7ba67b5a7bd4b0bf6c1f09491b06a866
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Mon Jan 7 18:18:46 2019 +0200
+
+    templates
+
+commit cd664393312c87651625d32ab4b2b57a2256e70d
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Mon Jan 7 18:17:35 2019 +0200
+
+    templates
+
+commit 512c3dd36e2d312af9b2ec4628b76be103c0992f
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Mon Jan 7 18:17:13 2019 +0200
+
+    templates
+
+commit 8e24f1223c842808ee2985459b239301e7918edf
+Author: Elad Israel <israelelad1@gmail.com>
+Date:   Mon Jan 7 18:15:00 2019 +0200
+
+    Initial commit
+
